@@ -53,14 +53,12 @@ public class CharacterSprite {
     }
 
     public void handleTouchDown() {
-        System.out.println("handleTouchDown called");
         oldX=xVelocity;
         oldY=yVelocity;
         xVelocity=yVelocity=0;
     }
 
     public void handleUp() {
-        System.out.println("handleUp called");
         xVelocity=oldX;
         yVelocity=oldY;
     }
