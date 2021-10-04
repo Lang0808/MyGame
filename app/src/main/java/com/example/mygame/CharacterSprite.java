@@ -12,6 +12,7 @@ public class CharacterSprite {
     private int screenHeight=Resources.getSystem().getDisplayMetrics().heightPixels;
     private int oldX, oldY;
     private int width, height;
+    private int dX, dY;
 
     public CharacterSprite(Bitmap bmp){
         image=bmp;
@@ -61,13 +62,17 @@ public class CharacterSprite {
     public void handleUp() {
         xVelocity=oldX;
         yVelocity=oldY;
+        dX=0;
+        dY=0;
     }
 
     public void move(int xx, int yy) {
-        int dx=xx-this.x;
-        int dy=yy-this.y;
-        int left=x+dx;
-        int top=y+dy;
+        if(dX==0 && dY==0){
+            dX=x-xx;
+            dY=y-yy;
+        }
+        int left=xx+dX;
+        int top=yy+dY;
         if(left<0) left=0;
         if(top<0) top=0;
         if(left+width>screenWidth) left=screenWidth-width;
